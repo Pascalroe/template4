@@ -277,8 +277,8 @@ ul {
 }
 
 .leistung-icon {
-    width: 64px;
-    height: 64px;
+    width: 36px;
+    height: 36px;
     margin: 0 auto 24px;
     background-color: var(--color-gruen);
     border-radius: 50%;
@@ -288,8 +288,8 @@ ul {
 }
 
 .leistung-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
     color: var(--color-weiss);
 }
 
@@ -416,6 +416,84 @@ ul {
     font-size: 14px;
     color: var(--color-gruen);
     font-weight: 500;
+}
+
+/* Team Section */
+.about-team {
+    padding: 100px 0;
+    background-color: var(--color-weiss);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.team-card {
+    text-align: center;
+    padding: 32px;
+    background-color: var(--color-weiss);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.team-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--color-grau);
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-beige);
+}
+
+.team-placeholder svg {
+    width: 64px;
+    height: 64px;
+    color: var(--color-gruen);
+}
+
+.team-role {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-gruen);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.team-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-anthrazit);
+    margin-bottom: 12px;
+}
+
+.team-text {
+    font-size: 14px;
+    color: var(--color-grau);
+    line-height: 1.6;
 }
 
 .stimmen {
