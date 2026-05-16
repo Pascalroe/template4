@@ -857,3 +857,47 @@ ul {
         font-size: 36px;
     }
 }
+
+.leistung-image {
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.leistung-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.leistung-card:hover .leistung-image img {
+    transform: scale(1.05);
+}
+
+.referenz-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.referenz-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.referenz-card:hover .referenz-image img {
+    transform: scale(1.05);
+}
+
+.hero {
+    background-size: cover;
+    background-position: center;
+}
+
+.geschichte-artikel { padding: 60px 0; background-color: #F5F1E8; }
+.geschichte-artikel h2 { font-size: 32px; margin-bottom: 24px; color: #1C1C1C; }
+.geschichte-artikel p { font-size: 16px; line-height: 1.8; color: #2B2B2B; margin-bottom: 16px; max-width: 800px; }
