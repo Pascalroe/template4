@@ -32,7 +32,14 @@
         </div>
     </header>
 
-    <section id="home" class="hero" style="background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=80');">
+    <section id="home" class="hero">
+        <div class="hero-slides">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80');"></div>
+        </div>
+        <div class="hero-overlay"></div>
         <div class="container hero-content">
             <h1 class="hero-title">Meisterqualität für Ihr Zuhause.</h1>
             <p class="hero-subtitle">Ihr vertrauenswürdiger Partner für Renovierung, Sanierung und Innenausbau. Seit Jahren stehen wir für Handwerkskunst Made in Germany.</p>
@@ -326,5 +333,20 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Hero Slideshow
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        // Alle 6 Sekunden das Bild wechseln
+        setInterval(nextSlide, 6000);
+    </script>
 </body>
 </html>
