@@ -32,6 +32,18 @@
         </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="leistungen.html" class="mobile-nav-link">Leistungen</a>
+            <a href="projekte.html" class="mobile-nav-link">Projekte</a>
+            <a href="ueber-uns.html" class="mobile-nav-link">Über uns</a>
+            <a href="kontakt.html" class="mobile-nav-link">Kontakt</a>
+            <a href="kontakt.html" class="btn btn-primary mobile-cta">Kostenlos beraten</a>
+        </nav>
+    </div>
+
     <section class="page-hero">
         <div class="container">
             <h1 class="page-title">Über uns</h1>
@@ -195,6 +207,35 @@
         </div>
     </section>
 
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Einblicke in unsere Arbeit</h2>
+                <p class="section-subtitle">Handwerk mit Leidenschaft</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80" alt="Baustelle">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt="Werkstatt">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=80" alt="Handwerker bei Arbeit">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600&q=80" alt="Renovierung">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80" alt="Innenausbau">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Fertiges Projekt">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="about-qualifikationen">
         <div class="container">
             <div class="section-header">
@@ -315,5 +356,48 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        
+        if (mobileMenuBtn && mobileMenuOverlay) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
+            });
+            
+            document.querySelectorAll('.mobile-nav-link, .mobile-cta').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Header Hide on Scroll
+            let lastScroll = 0;
+            const header = document.querySelector('.header');
+            
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll <= 0) {
+                    header.classList.remove('hidden');
+                    return;
+                }
+                
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    header.classList.add('hidden');
+                } else {
+                    header.classList.remove('hidden');
+                }
+                
+                lastScroll = currentScroll;
+            });
+        }
+    </script>
 </body>
 </html>
