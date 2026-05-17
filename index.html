@@ -32,6 +32,18 @@
         </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="leistungen.html" class="mobile-nav-link">Leistungen</a>
+            <a href="projekte.html" class="mobile-nav-link">Projekte</a>
+            <a href="ueber-uns.html" class="mobile-nav-link">Über uns</a>
+            <a href="kontakt.html" class="mobile-nav-link">Kontakt</a>
+            <a href="kontakt.html" class="btn btn-primary mobile-cta">Kostenlos beraten</a>
+        </nav>
+    </div>
+
     <section id="home" class="hero">
         <div class="hero-slides">
             <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=80');"></div>
@@ -347,6 +359,48 @@
         
         // Alle 6 Sekunden das Bild wechseln
         setInterval(nextSlide, 6000);
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Schließe Menü bei Link-Klick
+        document.querySelectorAll('.mobile-nav-link, .mobile-cta').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Header Hide on Scroll
+        let lastScroll = 0;
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                header.classList.remove('hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Nach unten scrollen - verstecken
+                header.classList.add('hidden');
+            } else {
+                // Nach oben scrollen - zeigen
+                header.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
     </script>
 </body>
 </html>
