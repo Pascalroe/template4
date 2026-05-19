@@ -318,6 +318,9 @@
 
         .gallery-item:hover .overlay { opacity: 1; }
 
+        /* Gallery Carousel (Desktop: hidden) */
+        .gallery-carousel { display: none; }
+
         .gallery-item .overlay span {
             color: rgba(255,255,255,0.9);
             font-family: var(--font-heading);
@@ -547,6 +550,18 @@
             .gallery-grid { grid-template-columns: 1fr; }
             .blog-grid { grid-template-columns: 1fr; }
             .scroll-top { bottom: 15px; right: 15px; width: 36px; height: 36px; }
+            
+            /* Mobile Gallery Carousel */
+            .gallery-carousel { display: block; position: relative; overflow: hidden; margin: 0 -5%; padding: 0 5%; }
+            .gallery-grid { display: none; }
+            .carousel-track { display: flex; transition: transform 0.4s ease; }
+            .carousel-slide { min-width: 100%; padding: 0 10px; box-sizing: border-box; }
+            .carousel-slide img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; }
+            .carousel-slide span { display: block; text-align: center; margin-top: 15px; font-family: var(--font-heading); font-style: italic; color: var(--text-secondary); font-size: 0.95rem; }
+            .carousel-prev, .carousel-next { position: absolute; top: 50%; transform: translateY(-50%); background: var(--bg-card); border: 1px solid var(--accent-gold); color: var(--accent-gold); width: 36px; height: 36px; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; }
+            .carousel-prev { left: 5px; }
+            .carousel-next { right: 5px; }
+            .carousel-prev:hover, .carousel-next:hover { background: var(--accent-gold); color: white; }
         }
     </style>
 </head>
@@ -592,6 +607,52 @@
     <section id="gallery">
         <h2>Galerie</h2>
         <p class="section-subtitle">Ausgewählte Momente aus der Natur</p>
+        
+        <!-- Mobile Carousel -->
+        <div class="gallery-carousel">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Alpine Stille">
+                    <span>Alpine Stille</span>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80" alt="Waldgeheimnis">
+                    <span>Waldgeheimnis</span>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&q=80" alt="Nebelwandler">
+                    <span>Nebelwandler</span>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80" alt="Morgenlicht">
+                    <span>Morgenlicht</span>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=600&q=80" alt="Spiegelung">
+                    <span>Spiegelung</span>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=600&q=80" alt="Grünes Gold">
+                    <span>Grünes Gold</span>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1505144808419-1957a94ca61e?w=600&q=80" alt="Abendglut">
+                    <span>Abendglut</span>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1518173946687-a4c036bc6c9f?w=600&q=80" alt="Gipfelrauschen">
+                    <span>Gipfelrauschen</span>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Wurzeln">
+                    <span>Wurzeln</span>
+                </div>
+            </div>
+            <button class="carousel-prev" onclick="moveSlide(-1)">&#8249;</button>
+            <button class="carousel-next" onclick="moveSlide(1)">&#8250;</button>
+        </div>
+        
+        <!-- Desktop Grid (hidden on mobile) -->
         <div class="gallery-grid">
             <div class="gallery-item">
                 <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Berge">
@@ -723,6 +784,18 @@
                 openLightbox(img.src);
             });
         });
+        
+        // Mobile Carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            const track = document.querySelector('.carousel-track');
+            track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+        }
     </script>
 
     <!-- Scroll to Top Button -->
